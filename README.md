@@ -109,7 +109,23 @@ usbipd attach --wsl --busid=<BUSID>
 
 ## Firmware
 
+#### Binwalk
 
+`binwalk -e firmware.bin`
+
+-> new version is written in rust (https://github.com/jowinjohnchemban/binwalkv3) problem is that even though it's much faster it has some things not yet fully reimplemented in the new version so you can use both
+#### Squashfs
+
+`unsquashfs fimrware.bin`
+#### JFFS2 : 
+
+```
+sudo modprobe mtdram total_size=256 erase_size=64
+sudo modprobe mtdblock
+sudo dd if=CFG.bin of=/dev/mtdblock0
+sudo mkdir /mnt/cfg
+sudo mount -t jffs2 /dev/mtdblock0 /mnt/cfg -o ro
+```
 ## Troubleshooting
 
 #### Problem 1 : I cannot see my uart to ttl adapter 
