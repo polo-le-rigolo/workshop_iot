@@ -1,0 +1,1 @@
+/home/eddymalou/Documents/Obsidian Vault/workshop_iot/README.md
